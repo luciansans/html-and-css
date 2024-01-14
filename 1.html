@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Loan Repayment Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+    
+        button {
+            background-color: rgb(153, 152, 152);
+            color: black;
+            padding: 10px 20px;
+            border: rgb(12, 12, 12);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Richfield.jpg" >
+        <h4>Enter loan information</h4>
+        <form id="loan-form">
+            <div>
+                <label for="loan-amount">Amount to  (ZAR) :<input type="number" id="loan-amount" required> 
+                </label>
+            </div>
+            <div >
+                <label for="interest-rate">Annual Percentage Rate of Interest (%):<input type="number" id="interest-rate" required>
+                </label>
+            </div>
+            <div >
+                <label for="loan-term">Repayment Period in Years:
+                <input type="number" id="loan-term" required>
+            </label>
+            </div>
+            <div >
+                <button type="button" onclick="calculateLoan()">Calculate</button>
+            </div>
+        </form>
+
+        <div class="result">
+            <p>Your Monthly Payment will be: <span id="monthly-payment"></span> </p>
+            <p>Your Total Payment will be: <span id="total-payment"></span> </p>
+            <p>Your Total Interest Payment will be: <span id="total-interest-payment"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function calculateLoan() {
+            const loanAmount = parseFloat(document.getElementById("loan-amount").value);
+            const annualInterestRate = parseFloat(document.getElementById("interest-rate").value);
+            const loanTermYears = parseInt(document.getElementById("loan-term").value);
+
+            const monthlyInterestRate = (annualInterestRate / 100) / 12;
+            const totalPayments = loanTermYears * 12;
+
+            const monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
+            const totalPayment = monthlyPayment * totalPayments;
+            const totalInterestPayment = totalPayment - loanAmount;
+
+            document.getElementById("monthly-payment").textContent = monthlyPayment.toFixed(2);
+            document.getElementById("total-payment").textContent = totalPayment.toFixed(2);
+            document.getElementById("total-interest-payment").textContent = totalInterestPayment.toFixed(2);
+        }
+    </script>
+</body>
+</html>
+
