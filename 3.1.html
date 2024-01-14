@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Input Field Background Color</title>
+</head>
+<body>
+    <form>
+        <p> Change the background colour of an Input Field on a click </p>
+        <input type="text" id="myInput">
+        <br>
+        <button type="button" onclick="changeBackgroundColor()">Submit</button>
+    </form>
+
+    <script>
+        function changeBackgroundColor() {
+            
+            var inputField = document.getElementById("myInput");
+
+            inputField.style.backgroundColor = "Green";
+        }
+    </script>
+</body>
+</html>
