@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question 4</title>
+  <style>
+    .error-message {
+      color: red;}
+     
+    </style>
+</head>
+<h1>Banking Application Login </h1>
+<body>
+
+<form id="loginForm" onsubmit="return validateForm()">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+  <div id="usernameError" class="error-message"></div>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+  <div></div>
+  
+  <button type="submit">Login</button>
+  <div id="passwordError" class="error-message"></div>
+ 
+</form>
+
+<script>
+  function validateForm() {
+    // Reset error messages
+    document.getElementById("usernameError").textContent = "";
+    document.getElementById("passwordError").textContent = "";
+
+    // Get form values
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Check if password is 123
+    if (password.trim() === "123") {
+      document.getElementById("passwordError").textContent = "Invalid username or password. please try again";
+      return false;
+    }
+
+    // If all checks pass, allow the form submission
+    return true;
+  }
+</script>
+
+</body>
+</html>
+
