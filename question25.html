@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 25</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        var number = prompt("Enter a number:");
+        var resultElement = document.getElementById("result");
+
+        if (number % 2 === 0 && number % 3 === 0) {
+            resultElement.textContent = number + " is divisible by both 2 and 3.";
+        } else if (number % 2 === 0 || number % 3 === 0) {
+            resultElement.textContent = number + " is divisible by either 2 or 3 (or both).";
+        } else {
+            resultElement.textContent = number + " is not divisible by either 2 or 3.";
+        }
+    </script>
+</body>
+</html>
